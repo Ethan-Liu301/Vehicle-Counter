@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Vehicle Counter</string>
+    <string name="TW">Two Wheeler</string>
+    <string name="FW">Four Wheeler</string>
+</resources>
