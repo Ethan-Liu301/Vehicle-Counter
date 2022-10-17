@@ -2,5 +2,5 @@
     <string name="app_name">Vehicle Counter</string>
     <string name="TW">Two Wheeler</string>
     <string name="FW">Four Wheeler</string>
-    
+    <string name="SW">Six Wheeler</string> 
 </resources>
