@@ -28,6 +28,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+* MainActivity handles the vehicle counting functionality.
+* It allows users to increment and decrement counts for two types of vehicles,
+* view current counts, and reset counts for the day.
+* It also manages database interactions for storing and retrieving counts.
+*/
+
 public class MainActivity extends AppCompatActivity
 {
     public MainActivity()
@@ -57,7 +64,11 @@ public class MainActivity extends AppCompatActivity
     TextView twd,fwd;
     Button twp,fwp,twm,fwm,twrst,fwrst,save,view;
     int twc,fwc;
-
+/**
+ * Initializes the vehicle counts for the current day.
+ * Checks if records for the current date exist in the database
+ * and retrieves the counts if they do.
+ */
 public void init() {
 
     boolean chk = chk_rec();
@@ -100,7 +111,10 @@ public void init() {
     fwcdis();
 
 }
-
+/**
+ * Sets up the button click listeners for incrementing, decrementing,
+ * and resetting vehicle counts. Also handles viewing the summary of counts.
+ */
 public void count() {
 
     twp.setOnClickListener(new View.OnClickListener() {
@@ -211,7 +225,10 @@ public void count() {
 
 }
 
-
+/**
+ * Displays the total count of two-wheelers for the current day.
+ * Retrieves the count from the database and updates the UI accordingly.
+ */
 public void twcdis() {
     String cdate,current_date=get_date();
     DBHelper dbHelper = new DBHelper(getApplicationContext());
@@ -238,6 +255,10 @@ public void twcdis() {
     }
     twd.setText(String.valueOf(twc));
 }
+/**
+ * Displays the total count of four-wheelers for the current day.
+ * Retrieves the count from the database and updates the UI accordingly.
+ */
 public void fwcdis()
 {
     String cdate,current_date=get_date();
@@ -266,6 +287,11 @@ public void fwcdis()
     fwd.setText(String.valueOf(fwc));
 
 }
+    
+/**
+ * Adds a new record for the current date with the current counts
+ * of two-wheelers and four-wheelers to the database.
+ */
 public void add_record()
 {
     DBHelper dbHelper = new DBHelper(this);
@@ -282,6 +308,7 @@ public void add_record()
    long id = db.insert(regContract.dbinfo.TBNAME,null,cv);
 
 }
+    
 public  Boolean chk_rec()
 {
     String current_date;
@@ -316,7 +343,14 @@ public  Boolean chk_rec()
 
 
 }
-
+    
+/**
+ * Updates the counts for the specified date in the database.
+ *
+ * @param udate The date for which the counts are being updated.
+ * @param utwc The updated count of two-wheelers.
+ * @param ufwc The updated count of four-wheelers.
+ */
 public void update(String udate,int utwc,int ufwc)
 {
     DBHelper dbHelper = new DBHelper(this);
